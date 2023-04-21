@@ -1,92 +1,63 @@
-# Snowflake Summit
+# Starting the application
+
+To start the application, go to the directory *app* `cd app` Then execute the command `streamlit run app.py`
+If you want to write the logs in a log file, execute the command `streamlit run app.py --logger.level=info 2>> ../logs/snowflake_summit.log`
+Possible log levels are error, warning, info and debug.
+
+# Starting the app with Docker
+
+* Download, install and start [Docker](https://docs.docker.com/get-docker/)
+* Go to the root directory of the project **snow** where the **Dockerfile** is located
+* Build the docker image: `docker build -t snowflake_summit_image .`
+* Start the container: `docker run -d --name snowflake_summit_container snowflake_summit_image`
+
+# Configuration
+
+The project contains two configuration files : **config.ini** and **.streamlit/config.toml
 
 
+# Installation guide for Windows
 
-## Getting started
+## Clone the project
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+You can get the necessary files using Git [(installation link)](https://git-scm.com/downloads) with command lines.
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/bqueguin/snowflake-summit.git
-git branch -M main
-git push -uf origin main
+cd /path/to/my/project/directory
+git clone https://gitlab.com/bqueguin/snowflake-summit.git
 ```
 
-## Integrate with your tools
+## DB
 
-- [ ] [Set up project integrations](https://gitlab.com/bqueguin/snowflake-summit/-/settings/integrations)
 
-## Collaborate with your team
+## Python 3.11.3
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+1. Download Python 3.11.4 installer by clicking [ici](https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe).
+2. Launch the installer and do the installation.
+3. Test the installation opening a command prompt and execute the command `python`. You must access to the Python console. If it's not the case, check that the directory containing the executable python.exe have been correctly added to the Windows PATH environment variable.
 
-## Test and Deploy
+   ![alt text](./images/install_python.png "Python installation")
 
-Use the built-in continuous integration in GitLab.
+4. Create your virtual Python environment
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+   A virtual environment is a directory containing a stand-alone installation of Python (independent of the operating system). It is especially convenient for all developers to use the same versions of Python packages. The **requirements.txt** file is used to list the packages required for the project as well as their versions used.
+   
+   ```
+   cd /path/to/my/project
+   python -m venv snowflake_summit_venv 
+   cd ./snowflake_summit_venv/Scripts
+   ./activate
+   cd ../..
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
 
-***
+   To stop using the **snowflake_summit_venv** virtual environment, execute the `deactivate` command.
 
-# Editing this README
+5. Start the app
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+   ```
+   cd app
+   streamlit run ./app.py
+   ```
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
