@@ -1,8 +1,8 @@
-from PIL import Image
 import streamlit as st
+from PIL import Image
 
 
-def set_page_config_00() -> None:
+def set_page_config() -> None:
     # TODO set a favicon
     # favicon = Image.open('../images/favicon_ffn.ico')
     st.set_page_config(page_title="Flight comparator 2.0",
