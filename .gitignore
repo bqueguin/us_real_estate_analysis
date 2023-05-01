@@ -3,3 +3,4 @@ logs/*
 .idea
 snowflake_summit.iml
 app/__pycache__/*
+app/.streamlit/secrets.toml

@@ -1,4 +1,8 @@
 folium==0.14.0
+pandas==1.5.3
 Pillow==9.5.0
-streamlit==1.21.0
+snowflake-connector-python==3.0.3
+snowflake-sqlalchemy==1.4.7
+SQLAlchemy==1.4.47
+streamlit==1.22.0
 streamlit-folium==0.11.1
