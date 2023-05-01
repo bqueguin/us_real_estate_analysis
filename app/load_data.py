@@ -6,7 +6,7 @@ from datetime import timedelta
 
 @st.cache_data(ttl=timedelta(weeks=1), show_spinner="Loading data from Snowpark DB...")
 def get_data(_conn: SQLConnection) -> pd.DataFrame:
-    df = _conn.query("""SELECT * FROM ZRHVI2020JUL WHERE "RegionType" = 'State'""", )
+    df = _conn.query("""SELECT * FROM ZRHVI2020JUL WHERE "RegionType" = 'State' and "Region Name" != 'District of Columbia' """, )
     return df
 
 
