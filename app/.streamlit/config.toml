@@ -1,4 +1,4 @@
-# Streamlit version: 1.13.0
+# Streamlit version: 1.22.0
 
 [global]
 
@@ -168,17 +168,16 @@ showPyplotGlobalUse = true
 base = "light"
 
 # Primary accent color for interactive elements.
-primaryColor = "#fed44a"
+primaryColor = "#E2001A"
 
 # Background color for the main content area.
-backgroundColor = "#f3f8fc"
+backgroundColor = "white"
 
 # Background color used for the sidebar and most interactive widgets.
-secondaryBackgroundColor = "#9dcdfe"
+secondaryBackgroundColor = "#6DC9EE"
 
 # Color used for almost all text.
-textColor = "#1A1C3C"
+textColor = "black"
 
 # Font family for all text in the app, except code blocks. One of "sans serif", "serif", or "monospace".
 font = "sans serif"
-

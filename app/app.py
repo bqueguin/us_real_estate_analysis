@@ -1,11 +1,13 @@
+import json
+
 import folium
 import streamlit as st
 from streamlit_folium import st_folium
-import json
 
 from config import logger
-from header import set_page_config
-from load_data import get_data, get_region, get_indicator, filter_df, get_dates, get_value_bins
+from header import display_footer, set_page_config
+from load_data import (filter_df, get_data, get_dates, get_indicator,
+                       get_region, get_value_bins)
 
 logger.debug("New run of app.py")
 set_page_config()
@@ -22,16 +24,10 @@ def main() -> None:
     dates = get_dates(df)
     default_date = max(dates)
 
-    st.title("Welcome to the awesome app")
-    tab1, tab2, tab3 = st.tabs(["📈 Line Chart", "🌎 Map", "❓ About"])
+    st.title("Zillow Home Value Index Analysis")
+    tab1, tab2 = st.tabs(["🌎 Map", "📈 Line Chart"])
+
     with tab1:
-        selected_states = st.multiselect("States", region_name, ['New York', 'Nevada'])
-        selected_indicator_chart = st.selectbox("Indicator", indicator_name, key='indicator')
-
-        df_filter = filter_df(df, selected_states, selected_indicator_chart)
-        st.line_chart(df_filter, y=selected_states)
-
-    with tab2:
         selected_indicator_map = st.selectbox("Indicator", indicator_name, key='indicator_map')
         selected_date_map = st.select_slider("Date", dates, value=default_date)
         # Création de la carte
@@ -52,7 +48,8 @@ def main() -> None:
             fill_color='YlOrRd',
             fill_opacity=0.7,
             line_opacity=0.2,
-            legend_name=selected_indicator_map + " ($)"
+            legend_name=str(selected_date_map) + ' - ' + selected_indicator_map + " ($)",
+            highlight=True
         ).add_to(m)
 
         # creating a state indexed version of the dataframe so we can lookup values
@@ -72,6 +69,15 @@ def main() -> None:
         folium.LayerControl().add_to(m)
         # Display the map
         st_folium(m, width=1000)
+
+    with tab2:
+        selected_states = st.multiselect("States", region_name, ['New York', 'Nevada'])
+        selected_indicator_chart = st.selectbox("Indicator", indicator_name, key='indicator')
+
+        df_filter = filter_df(df, selected_states, selected_indicator_chart)
+        st.line_chart(df_filter, y=selected_states)
+
+    display_footer()
 
 
 if __name__ == '__main__':

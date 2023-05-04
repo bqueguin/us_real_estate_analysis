@@ -1,7 +1,8 @@
+from datetime import date, timedelta
+
 import pandas as pd
 import streamlit as st
 from streamlit.connections.sql_connection import SQLConnection
-from datetime import timedelta, date
 
 
 @st.cache_data(ttl=timedelta(weeks=1), show_spinner="Loading data from Snowpark DB...")

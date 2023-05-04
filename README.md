@@ -1,6 +1,6 @@
 # Starting the application
 
-To start the application, go to the directory *app* `cd app` Then execute the command `streamlit run app.py`
+To start the application, go to the directory **app** `cd app` Then execute the command `streamlit run app.py`
 If you want to write the logs in a log file, execute the command `streamlit run app.py --logger.level=info 2>> ../logs/snowflake_summit.log`
 Possible log levels are error, warning, info and debug.
 
@@ -13,7 +13,7 @@ Possible log levels are error, warning, info and debug.
 
 # Configuration
 
-The project contains two configuration files : **config.ini** and **.streamlit/config.toml
+The project contains two configuration files : **config.ini** and **.streamlit/config.toml**
 
 
 # Installation guide for Windows
