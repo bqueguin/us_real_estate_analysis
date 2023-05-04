@@ -15,6 +15,7 @@ def set_page_config() -> None:
 
 def display_footer() -> None:
     st.divider()
-    st.markdown("Learn more about Zillow Home Value Index Methodology: Click [here](https://www.zillow.com/research/zhvi-methodology-2019-highlights-26221/) !")
-    st.markdown("Check the source code of the app [here](https://gitlab.com/bqueguin/snowflake-summit.git)")
-    st.markdown("Source code Gitlab repo: created by [Bruno Queguiner](https://fr.linkedin.com/in/bruno-quéguiner-3a1619137)")
+    st.markdown("❄ Data comes from Knoema [Real Estate Data Atlas](https://app.snowflake.com/marketplace/listing/GZSTZ491W11/knoema-real-estate-data-atlas?search=real%20estate). Loaded thanks to :blue[Snowflake].")
+    st.markdown("🏘️ :red[*Learn more about Zillow Home Value Index Methodology*: **[Click here](https://www.zillow.com/research/zhvi-methodology-2019-highlights-26221/) !**]")
+    st.markdown("💻 [**Gitlab source code**](https://gitlab.com/bqueguin/snowflake-summit.git)")
+    st.markdown("👨‍💻 Created by [Bruno Queguiner](https://fr.linkedin.com/in/bruno-quéguiner-3a1619137)")

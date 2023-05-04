@@ -11,8 +11,7 @@ from load_data import (filter_df, get_data, get_dates, get_indicator,
 
 logger.debug("New run of app.py")
 set_page_config()
-DB_CONN = st.experimental_connection('snowpark', type='sql',
-                                     url="snowflake://brunoqueguiner:5CmCSaMVgOtfPO4e0yL7@qo18497.eu-west-2.aws/REAL_ESTATE_DATA_ATLAS/REALESTATE")
+DB_CONN = st.experimental_connection('real_estate_db', type='sql')
 
 
 def main() -> None:
@@ -28,13 +27,15 @@ def main() -> None:
     tab1, tab2 = st.tabs(["🌎 Map", "📈 Line Chart"])
 
     with tab1:
-        selected_indicator_map = st.selectbox("Indicator", indicator_name, key='indicator_map')
-        selected_date_map = st.select_slider("Date", dates, value=default_date)
-        # Création de la carte
+        col1_1, _ = st.columns([1, 3])
+        selected_indicator_map = col1_1.selectbox("Indicator", indicator_name, key='indicator_map')
+        col1_2, _ = st.columns([1, 1])
+        selected_date_map = col1_2.select_slider("Date", dates, value=default_date)
+        # Map creation
         m = folium.Map(location=[40, -95], zoom_start=4)
 
         us_states_json = json.load(open('../data/us-states.json'))
-        # Ajout de la couche GeoJSON pour les États-Unis
+        # Add GeoJSON layer for the US
         folium.GeoJson(us_states_json, name='geojson').add_to(m)
 
         df_map = df.loc[(df['Indicator Name'] == selected_indicator_map) & (df['Date'] == selected_date_map)]
@@ -71,11 +72,12 @@ def main() -> None:
         st_folium(m, width=1000)
 
     with tab2:
-        selected_states = st.multiselect("States", region_name, ['New York', 'Nevada'])
-        selected_indicator_chart = st.selectbox("Indicator", indicator_name, key='indicator')
+        col1_3, _ = st.columns([1, 1])
+        selected_indicator_chart = col1_3.selectbox("Indicator", indicator_name, key='indicator')
+        selected_states = col1_3.multiselect("States", region_name, ['New York', 'Nevada'])
 
         df_filter = filter_df(df, selected_states, selected_indicator_chart)
-        st.line_chart(df_filter, y=selected_states)
+        st.line_chart(df_filter, y=selected_states, height=750)
 
     display_footer()
 
