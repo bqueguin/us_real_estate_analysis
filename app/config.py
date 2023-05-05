@@ -27,7 +27,7 @@ def get_config(filename: str, section: str) -> dict:
     return config
 
 
-config_filename = '../config.ini'
+config_filename = 'config.ini'
 
 DB_CONFIG = get_config(config_filename, section='db')
 
