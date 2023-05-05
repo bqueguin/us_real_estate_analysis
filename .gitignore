@@ -1,5 +1,4 @@
 snowflake_summit_venv
-logs/*
 .idea
 snowflake_summit.iml
 app/__pycache__/*
