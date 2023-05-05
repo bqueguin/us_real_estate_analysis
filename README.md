@@ -1,7 +1,7 @@
 # Starting the application
 
-To start the application, go to the directory **app** `cd app` Then execute the command `streamlit run app/app.py`
-If you want to write the logs in a log file, execute the command `streamlit run app/app.py --logger.level=info 2>> logs/snowflake_summit.log`
+To start the application, go to the directory **app** `cd app` Then execute the command `streamlit run app.py`
+If you want to write the logs in a log file, execute the command `streamlit run app.py --logger.level=info 2>> logs/snowflake_summit.log`
 Possible log levels are error, warning, info and debug.
 
 # Starting the app with Docker
@@ -58,6 +58,6 @@ git clone https://gitlab.com/bqueguin/snowflake-summit.git
 
    ```
    cd app
-   streamlit run app/app.py
+   streamlit run app.py
    ```
 
