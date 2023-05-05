@@ -34,7 +34,7 @@ def main() -> None:
         # Map creation
         m = folium.Map(location=[40, -95], zoom_start=4)
 
-        us_states_json = json.load(open('data/us-states.json'))
+        us_states_json = json.load(open('../data/us-states.json'))
         # Add GeoJSON layer for the US
         folium.GeoJson(us_states_json, name='geojson').add_to(m)
 

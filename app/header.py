@@ -3,7 +3,7 @@ from PIL import Image
 
 
 def set_page_config() -> None:
-    favicon = Image.open('images/favicon.ico')
+    favicon = Image.open('../images/favicon.ico')
     st.set_page_config(page_title="US Real Estate",
                        page_icon=favicon,
                        layout="wide",
