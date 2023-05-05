@@ -2,8 +2,6 @@ import logging as lg
 from configparser import RawConfigParser
 from datetime import date
 
-import streamlit as st
-
 
 def today() -> str:
     date_today = date.today()
@@ -27,7 +25,7 @@ def get_config(filename: str, section: str) -> dict:
     return config
 
 
-config_filename = '../config.ini'
+config_filename = 'config.ini'
 
 DB_CONFIG = get_config(config_filename, section='db')
 
